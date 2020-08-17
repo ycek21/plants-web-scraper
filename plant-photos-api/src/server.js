@@ -2,6 +2,8 @@ const express = require('express');
 const cors = require('cors');
 const morgan = require('morgan');
 const { json, urlencoded } = require('body-parser');
+const { UNSPLASH_URL, PLANT_TYPES } = require('./constants')
+const scraper = require('./scraper')
 
 const app = express();
 
@@ -12,9 +14,19 @@ app.use(json());
 app.use(urlencoded({ extended: true }));
 app.use(morgan('dev'));
 
-app.get('/api/hello-world', (req, res, next) => {
-  res.status(200).json({ message: "Hello World!" })
-});
+app.get('/api/plant-photos/scrape', async (req, res, next) => {
+  const { plantType } = req.query
+  if (!plantType) {
+    res.status(400).send({ message: `Query string parameter 'plantType' is required.` })
+  } else {
+    if (!PLANT_TYPES[plantType.toLowerCase()]) {
+      res.status(400).send({ message: `'${plantType}' is not allowed plantType.` })
+    } else {
+      await scraper.downloadPhotos(`${UNSPLASH_URL}/${plantType.toLowerCase()}`)
+      res.status(200).send('ok')
+    }
+  }
+})
 
 const start = async () => {
   try {
