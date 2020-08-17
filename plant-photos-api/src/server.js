@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const morgan = require('morgan');
 const { json, urlencoded } = require('body-parser');
+const errorHandler = require('./middlewares/error-handler');
 const { UNSPLASH_URL, PLANT_TYPES } = require('./constants')
 const scraper = require('./scraper')
 
@@ -27,6 +28,8 @@ app.get('/api/plant-photos/scrape', async (req, res, next) => {
     }
   }
 })
+
+app.use(errorHandler);
 
 const start = async () => {
   try {
