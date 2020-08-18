@@ -3,8 +3,8 @@ const cors = require('cors');
 const morgan = require('morgan');
 const { json, urlencoded } = require('body-parser');
 const errorHandler = require('./middlewares/error-handler');
-const { UNSPLASH_URL, PLANT_TYPES } = require('./constants')
 const scraper = require('./scraper')
+const { UNSPLASH_URL, PLANT_TYPES } = require('./constants')
 
 const app = express();
 
@@ -16,16 +16,20 @@ app.use(urlencoded({ extended: true }));
 app.use(morgan('dev'));
 
 app.get('/api/plant-photos/scrape', async (req, res, next) => {
-  const { plantType } = req.query
-  if (!plantType) {
-    res.status(400).send({ message: `Query string parameter 'plantType' is required.` })
-  } else {
-    if (!PLANT_TYPES[plantType.toLowerCase()]) {
-      res.status(400).send({ message: `'${plantType}' is not allowed plantType.` })
+  try {
+    const { plantType } = req.query
+    if (!plantType) {
+      res.status(400).send({ message: `Query string parameter 'plantType' is required.` })
     } else {
-      await scraper.downloadPhotos(`${UNSPLASH_URL}/${plantType.toLowerCase()}`)
-      res.status(200).send('ok')
+      if (!PLANT_TYPES[plantType.toLowerCase()]) {
+        res.status(400).send({ message: `'${plantType}' is not allowed plantType.` })
+      } else {
+        const downloadedPhotos = await scraper.downloadPhotos(`${UNSPLASH_URL}/${plantType.toLowerCase()}`)
+        res.status(200).send(downloadedPhotos)
+      }
     }
+  } catch (err) {
+    next(err)
   }
 })
 
