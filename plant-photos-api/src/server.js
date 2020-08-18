@@ -15,6 +15,8 @@ app.use(json());
 app.use(urlencoded({ extended: true }));
 app.use(morgan('dev'));
 
+app.use('/api/photos', express.static('photos'));
+
 app.get('/api/plant-photos/scrape', async (req, res, next) => {
   try {
     const { plantType } = req.query
