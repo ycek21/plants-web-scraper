@@ -26,19 +26,26 @@ const download = (url, destination) => new Promise((resolve, reject) => {
 const downloadPhotos = async (url) => {
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
-
-  let result;
+  const downloadedPhotos = []
 
   await page.goto(url);
 
-  if (!await existsAsync(`./${PLANT_PHOTOS_DIRECTORY}`)) {
-    await mkdirAsync(`./${PLANT_PHOTOS_DIRECTORY}`)
+  const plantType = url.split('/').slice(-1)[0]
+  const dirPath = `./${PLANT_PHOTOS_DIRECTORY}/${plantType}`
+  if (!await existsAsync(dirPath)) {
+    await mkdirAsync(dirPath, { recursive: true })
   }
 
   const photos = await page.evaluate(() => Array.from(document.images, e => e.src));
 
-  for (let i = 0; i < photos.length; i++) {
-    result = await download(photos[i], `./${PLANT_PHOTOS_DIRECTORY}/photo-${i}.png`);
+  for (let i = 0; i < photos.length - 1; i++) {
+    if (photos[i].includes('profile') || photos[i].includes('placeholder-avatars')) {
+      continue
+    }
+    const result = await download(photos[i], `${dirPath}/photo-${i}.png`);
+    if (result) {
+      downloadedPhotos.push(photos[i])
+    }
     if (result === true) {
       console.log('Success:', photos[i], 'has been downloaded successfully.');
     } else {
@@ -48,6 +55,7 @@ const downloadPhotos = async (url) => {
   }
 
   await browser.close();
+  return downloadedPhotos
 };
 
 module.exports = {
