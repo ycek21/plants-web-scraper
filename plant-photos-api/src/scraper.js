@@ -1,3 +1,4 @@
+const { port, enviroment, protocol, host } = require('./config');
 const fs = require('fs');
 const { promisify } = require('util')
 const https = require('https');
@@ -26,7 +27,7 @@ const download = (url, destination) => new Promise((resolve, reject) => {
 const downloadPhotos = async (url) => {
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
-  const downloadedPhotos = []
+  const scrapedPhotosLinks = []
 
   await page.goto(url);
 
@@ -44,7 +45,7 @@ const downloadPhotos = async (url) => {
     }
     const result = await download(photos[i], `${dirPath}/photo-${i}.png`);
     if (result) {
-      downloadedPhotos.push(photos[i])
+      scrapedPhotosLinks.push(`${protocol}://${host}:${port}/api/photos/${plantType}/photo-${i}.png`)
     }
     if (result === true) {
       console.log('Success:', photos[i], 'has been downloaded successfully.');
@@ -55,7 +56,7 @@ const downloadPhotos = async (url) => {
   }
 
   await browser.close();
-  return downloadedPhotos
+  return scrapedPhotosLinks
 };
 
 module.exports = {

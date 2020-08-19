@@ -1,4 +1,4 @@
-const { port, enviroment } = require('./config');
+const { port, enviroment, protocol, host } = require('./config');
 const express = require('express');
 const cors = require('cors');
 const morgan = require('morgan');
@@ -22,13 +22,15 @@ app.get('/api/plant-photos/scrape', async (req, res, next) => {
   try {
     const { plantType } = req.query
     if (!plantType) {
-      res.status(400).send({ message: `Query string parameter 'plantType' is required.` })
+      res.status(400).json({ message: `Query string parameter 'plantType' is required.` })
     } else {
       if (!PLANT_TYPES[plantType.toLowerCase()]) {
-        res.status(400).send({ message: `'${plantType}' is not allowed plantType.` })
+        res.status(400).json({ message: `'${plantType}' is not allowed plantType.` })
       } else {
-        const downloadedPhotos = await scraper.downloadPhotos(`${UNSPLASH_URL}/${plantType.toLowerCase()}`)
-        res.status(200).send(downloadedPhotos)
+        const scrapedPhotosLinks = await scraper.downloadPhotos(`${UNSPLASH_URL}/${plantType.toLowerCase()}`)
+        res.status(200).json({
+          scrapedPhotosLinks: scrapedPhotosLinks
+        })
       }
     }
   } catch (err) {
@@ -41,7 +43,7 @@ app.use(errorHandler);
 const start = async () => {
   try {
     app.listen(port, () => {
-      console.log(`REST API root url: http://localhost:${port}/api`);
+      console.log(`REST API root url: ${protocol}://${host}:${port}/api`);
       console.log(`Enviroment: ${enviroment}`);
     });
   } catch (err) {
