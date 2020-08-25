@@ -2,7 +2,7 @@ const { port, enviroment, protocol, host } = require('./config');
 const fs = require('fs');
 const https = require('https');
 const puppeteer = require('puppeteer');
-const { createDirectory } = require('./utils/index')
+const { createDirectoryRecursively, deleteDirectoryRecursively } = require('./utils/index')
 const { PLANT_PHOTOS_DIRECTORY } = require('./constants')
 
 
@@ -31,7 +31,8 @@ const downloadPhotos = async (url) => {
 
   const plantType = url.split('/').slice(-1)[0]
   const dirPath = `./${PLANT_PHOTOS_DIRECTORY}/${plantType}`
-  await createDirectory(dirPath)
+  await deleteDirectoryRecursively(dirPath)
+  await createDirectoryRecursively(dirPath)
 
   const photos = await page.evaluate(() => Array.from(document.images, e => e.src));
 

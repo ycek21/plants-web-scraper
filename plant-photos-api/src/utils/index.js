@@ -2,14 +2,17 @@ const fs = require('fs');
 const { promisify } = require('util')
 
 const mkdirAsync = promisify(fs.mkdir)
-const existsAsync = promisify(fs.exists)
+const rmdirAsync = promisify(fs.rmdir)
 
-const createDirectory = async (dirPath) => {
-  if (!await existsAsync(dirPath)) {
-    return mkdirAsync(dirPath, { recursive: true })
-  }
+const createDirectoryRecursively = async (dirPath) => {
+  return mkdirAsync(dirPath, { recursive: true })
+}
+
+const deleteDirectoryRecursively = async (dirPath) => {
+  return rmdirAsync(dirPath, { recursive: true })
 }
 
 module.exports = {
-  createDirectory
+  createDirectoryRecursively,
+  deleteDirectoryRecursively
 }
