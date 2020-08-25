@@ -1,0 +1,14 @@
+.container {
+  width: 99vw;
+  min-height: 99vh;
+}
+
+.header {
+  width: 100vw;
+  height: 20vh;
+}
+
+main {
+  width: 100vw;
+  min-height: 80vh;
+}
