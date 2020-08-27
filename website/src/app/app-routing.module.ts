@@ -1,4 +1,4 @@
-import { PlantComponent } from './modules/plant/plant.component';
+import { PlantCardComponent } from './modules/plant-card/plant-card.component';
 import { HomePageComponent } from './modules/home-page/home-page.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -7,7 +7,7 @@ import { Routes, RouterModule } from '@angular/router';
 const routes: Routes = [
   { path: '', component: HomePageComponent},
   { path: 'home', component: HomePageComponent},
-  { path: 'plant/:plantType', component: PlantComponent},
+  { path: 'plant/:plantType', component: PlantCardComponent},
   { path: '**', component: HomePageComponent}
 ];
 
@@ -16,4 +16,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-export const routingComponents = [HomePageComponent, PlantComponent];
+export const routingComponents = [HomePageComponent, PlantCardComponent];

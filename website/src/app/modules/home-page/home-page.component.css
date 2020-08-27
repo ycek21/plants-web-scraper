@@ -3,7 +3,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 80vh;
+  min-height: 80vh;
 }
 
 .container__text {
@@ -18,7 +18,6 @@
   padding: 7vw;
 }
 
-.container_icon {
-    width: 7vw;
-    height: 7vh;
+.container__arrow {
+  font-size: 7vw;
 }
