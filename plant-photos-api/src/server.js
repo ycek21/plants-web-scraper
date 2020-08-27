@@ -5,7 +5,8 @@ const morgan = require('morgan');
 const { json, urlencoded } = require('body-parser');
 const errorHandler = require('./middlewares/error-handler');
 const scraper = require('./scraper')
-const { UNSPLASH_URL, PLANT_TYPES } = require('./constants')
+const { deleteDirectoryRecursively } = require('./utils/index')
+const { UNSPLASH_URL, PLANT_TYPES, PLANT_PHOTOS_DIRECTORY } = require('./constants')
 
 const app = express();
 
@@ -31,6 +32,25 @@ app.get('/api/plant-photos/scrape', async (req, res, next) => {
         res.status(200).json({
           scrapedPhotosLinks: scrapedPhotosLinks
         })
+      }
+    }
+  } catch (err) {
+    next(err)
+  }
+})
+
+app.delete('/api/plant-photos', async (req, res, next) => {
+  try {
+    const { plantType } = req.query
+    if (!plantType) {
+      res.status(400).json({ message: `Query string parameter 'plantType' is required.` })
+    } else {
+      if (!PLANT_TYPES[plantType.toLowerCase()]) {
+        res.status(400).json({ message: `'${plantType}' is not allowed plantType.` })
+      } else {
+        const dirPath = `./${PLANT_PHOTOS_DIRECTORY}/${plantType}`
+        await deleteDirectoryRecursively(dirPath)
+        res.status(204).end()
       }
     }
   } catch (err) {

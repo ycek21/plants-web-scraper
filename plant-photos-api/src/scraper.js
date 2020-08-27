@@ -1,12 +1,10 @@
 const { port, enviroment, protocol, host } = require('./config');
 const fs = require('fs');
-const { promisify } = require('util')
 const https = require('https');
 const puppeteer = require('puppeteer');
+const { createDirectoryRecursively, deleteDirectoryRecursively } = require('./utils/index')
 const { PLANT_PHOTOS_DIRECTORY } = require('./constants')
 
-const mkdirAsync = promisify(fs.mkdir)
-const existsAsync = promisify(fs.exists)
 
 const download = (url, destination) => new Promise((resolve, reject) => {
   const file = fs.createWriteStream(destination);
@@ -33,9 +31,8 @@ const downloadPhotos = async (url) => {
 
   const plantType = url.split('/').slice(-1)[0]
   const dirPath = `./${PLANT_PHOTOS_DIRECTORY}/${plantType}`
-  if (!await existsAsync(dirPath)) {
-    await mkdirAsync(dirPath, { recursive: true })
-  }
+  await deleteDirectoryRecursively(dirPath)
+  await createDirectoryRecursively(dirPath)
 
   const photos = await page.evaluate(() => Array.from(document.images, e => e.src));
 

@@ -1,0 +1,24 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+}
+
+.container__text {
+  font-family: Saira;
+  font-size: 4vw;
+  color: black;
+  font-style: normal;
+  font-weight: bolder;
+}
+
+.container__text--plants {
+  padding: 7vw;
+}
+
+.container_icon {
+    width: 7vw;
+    height: 7vh;
+}
