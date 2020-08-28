@@ -1,5 +1,5 @@
+import { PlantsService } from './../../core/services/plants.service';
 import { Component, OnInit } from '@angular/core';
-import { MatChipSelectionChange } from '@angular/material/chips';
 
 @Component({
   selector: 'app-plant-list',
@@ -8,23 +8,33 @@ import { MatChipSelectionChange } from '@angular/material/chips';
 })
 export class PlantListComponent implements OnInit {
   plantsType: string[] = [
-    'Rose',
-    'Tulip',
-    'Orchid',
-    'Cactus',
-    'Sunflower',
-    'Hydrangea',
-    'Fern',
-    'Lavender',
-    'Palm'
+    'rose',
+    'tulip',
+    'orchid',
+    'cactus',
+    'sunflower',
+    'hydrangea',
+    'fern',
+    'lavender',
+    'palm'
   ];
-  selectedPlant: string;
+  selectedPlant = 'cactus';
+  plantsURL: string[] = [];
 
-  constructor() {}
+  constructor(private plantsService: PlantsService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.getPlantsURLs(this.selectedPlant);
+  }
+
+  getPlantsURLs(plantType: string) {
+    this.plantsService.getPhotoList(plantType).subscribe( response => {
+      this.plantsURL = response['scrapedPhotosLinks'];
+    });
+  }
 
   selectPlant(plant: string) {
     this.selectedPlant = plant;
+    this.getPlantsURLs(this.selectedPlant);
   }
 }

@@ -13,4 +13,4 @@
   </div>
   <div class="container_toggle"><mat-slide-toggle></mat-slide-toggle></div>
 </div>
-<app-plant-card></app-plant-card>
+<app-plant-card *ngFor="let plantURL of plantsURL" [plantPhoto]="plantURL"></app-plant-card>

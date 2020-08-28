@@ -1,15 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from "@angular/core";
 
 @Component({
-  selector: 'app-plant-card',
-  templateUrl: './plant-card.component.html',
-  styleUrls: ['./plant-card.component.css']
+  selector: "app-plant-card",
+  templateUrl: "./plant-card.component.html",
+  styleUrls: ["./plant-card.component.css"],
 })
 export class PlantCardComponent implements OnInit {
+  @Input() plantPhoto;
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {
   }
-
 }
