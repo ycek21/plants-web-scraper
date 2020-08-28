@@ -7,6 +7,7 @@ import { Component, OnInit, Input } from "@angular/core";
 })
 export class PlantCardComponent implements OnInit {
   @Input() plantPhoto;
+  @Input() photoCardIndex;
 
   constructor() {}
 

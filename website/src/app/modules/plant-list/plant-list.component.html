@@ -18,6 +18,6 @@
   </div>
   
   <div class="container_photoContainer">
-    <app-plant-card *ngFor="let plantURL of plantsURL" [plantPhoto]="plantURL"></app-plant-card>
+    <app-plant-card *ngFor="let plantURL of plantsURL; index as i" [plantPhoto]="plantURL" [photoCardIndex]="i"></app-plant-card>
   </div>
 </div>

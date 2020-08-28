@@ -1,6 +1,7 @@
 <div
+  [ngClass]="photoCardIndex % 2 == 1 ? 'plantCard--yellow' : 'plantCard'"
   class="plantCard"
   style="
-    background-image: url({{plantPhoto}});
-  "
+    background-image: url({{ plantPhoto }})
+    "
 ></div>
