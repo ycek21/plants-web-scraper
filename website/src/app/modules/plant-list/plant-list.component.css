@@ -1,39 +1,48 @@
 .container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    box-sizing: border-box;
+}
+
+.container_toolbar {
     width: 100vw;
-    min-height: 100vh;
+    height: 20vh;
     display: flex;
     flex-direction: column;
     align-content: center;
 }
 
-.plantBrowser {
+.container__plantBrowser {
     display: flex;
     justify-content: center;
     align-content: center;
     height: 15%;
-    /* width: 100%; */
+    width: 100%;
 }
 
-.plantBrowser_item {
+.plantBrowser__item {
     width: 5vw;
     display: flex;
     justify-content: center;
 }
 
 mat-chip.mat-standard-chip {
-    /* background-color: #F2E352; */
     font-family: Saira;
     background-color: black;
     color:white
-
 }
 
 .mat-chip.mat-standard-chip.mat-chip-selected.mat-primary {
     background-color: #F2E352;
 }
 
-.container_toggle {
-    width: 10vw;
+.toolbar__toggle {
+    display: flex;
+    width: 100%;
+    height: 50%;
+    justify-content: center;
+    align-items: center;
 }
 
 /deep/ .mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-bar {
@@ -42,4 +51,15 @@ mat-chip.mat-standard-chip {
 
 /deep/ .mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-thumb {
     background-color: white;
+}
+
+.container_photoContainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    min-height: 80vh;
+    width: 50%;
+    padding-left: 25vw;
+    padding-right: 25vw;
 }

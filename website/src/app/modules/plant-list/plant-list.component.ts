@@ -20,6 +20,7 @@ export class PlantListComponent implements OnInit {
   ];
   selectedPlant = 'cactus';
   plantsURL: string[] = [];
+  slideToggle = true;
 
   constructor(private plantsService: PlantsService) {}
 
