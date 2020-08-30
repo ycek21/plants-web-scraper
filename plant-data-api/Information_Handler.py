@@ -3,7 +3,7 @@ import requests
 from bs4 import BeautifulSoup
 import wikipedia
 import re
-import pandas as pd
+import json
 wikipedia_url = 'https://en.wikipedia.org/wiki/'
 
 
@@ -18,26 +18,33 @@ class InformationHandler(Resource):
         sentences=text.split('.')[:4]
         sentences='.'.join(sentences)
         plant={}
-        plant['Name']=name
-        plant['Description']=sentences
-        family_info(name)
-        #print(plant)
+        Kingdom,Family,Order=family_info(name)
+        plant['Name'] = name
+        plant['Description'] = sentences
+        plant['Kingdom']=Kingdom
+        plant['Order']=Order
+        plant['Family']=Family
+        json_plant=json.dumps(plant)
+        return json_plant
 
 
 def family_info(name):
+    Kingdom=''
+    Family=''
+    Order=''
     url = wikipedia_url + name
     response = requests.get(url)
     soup = BeautifulSoup(response.text, 'html.parser')
     trs = soup.find('table',{'class':'infobox biota'}).tbody.findAll('tr')
-    rows = filter(lambda tr: tr.td, trs)
-    kingdom_row = list(filter(lambda row: row.td[0] == 'Kingdom', rows))
+    for row in trs:
+        cols=row.find_all('td')
+        cols=[x.text.strip() for x in cols]
+        if( cols.__len__()>1 and cols[0] =='Kingdom:'):
+            Kingdom=cols[1]
+        if (cols.__len__() > 1 and cols[0] == 'Order:'):
+            Order = cols[1]
+        if (cols.__len__() > 1 and cols[0] == 'Family:'):
+            Family = cols[1]
 
-    # albo trs[4].findAll('td')[0] == 'Kingdom:' <- to jest znacznie bardziej schludne
-    # [0] to Kingdom jako header, [1] to jego wartosc
+    return Kingdom,Family,Order
 
-    # lambda_func_find = lambda tr: tr.td[0] == 'Kingdom:'
-    # family_tr = trs.find(lambda tr: tr.td[0].text == 'Kingdom:')
-
-    # \/ jest dzialajace ale mozna lepiej
-    family = trs[4].findAll('td')[1].a.text
-    print(kingdom_row)
