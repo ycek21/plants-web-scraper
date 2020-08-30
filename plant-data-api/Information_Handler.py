@@ -11,6 +11,8 @@ wikipedia_url = 'https://en.wikipedia.org/wiki/'
 class InformationHandler(Resource):
 
     def get(self,name):
+        if name=='palm':
+            name='Arecaceae'
         wiki=wikipedia.page(name)
         text=wiki.content
         text=re.sub(r'==.*?==+','',text)

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="26d3deee-b0ce-462f-8587-b5c5344d541f" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="1clCWFiph7aYRxCxfOuhtD4KYIg" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+  </component>
+  <component name="RunManager">
+    <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="web_Scrapper" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.main" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="26d3deee-b0ce-462f-8587-b5c5344d541f" name="Default Changelist" comment="" />
+      <created>1591093822279</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1591093822279</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state width="1480" height="255" key="GridCell.Tab.0.bottom" timestamp="1591204996621">
+      <screen x="-3440" y="-91" width="3440" height="1417" />
+    </state>
+    <state width="1480" height="255" key="GridCell.Tab.0.bottom/-3440.-91.3440.1417/0.23.1680.1027@-3440.-91.3440.1417" timestamp="1591204996621" />
+    <state width="1480" height="255" key="GridCell.Tab.0.center" timestamp="1591204996620">
+      <screen x="-3440" y="-91" width="3440" height="1417" />
+    </state>
+    <state width="1480" height="255" key="GridCell.Tab.0.center/-3440.-91.3440.1417/0.23.1680.1027@-3440.-91.3440.1417" timestamp="1591204996620" />
+    <state width="1480" height="255" key="GridCell.Tab.0.left" timestamp="1591204996620">
+      <screen x="-3440" y="-91" width="3440" height="1417" />
+    </state>
+    <state width="1480" height="255" key="GridCell.Tab.0.left/-3440.-91.3440.1417/0.23.1680.1027@-3440.-91.3440.1417" timestamp="1591204996620" />
+    <state width="1480" height="255" key="GridCell.Tab.0.right" timestamp="1591204996621">
+      <screen x="-3440" y="-91" width="3440" height="1417" />
+    </state>
+    <state width="1480" height="255" key="GridCell.Tab.0.right/-3440.-91.3440.1417/0.23.1680.1027@-3440.-91.3440.1417" timestamp="1591204996621" />
+    <state width="1699" height="500" key="GridCell.Tab.1.bottom" timestamp="1591114831072">
+      <screen x="-3440" y="-91" width="3440" height="1417" />
+    </state>
+    <state width="1699" height="500" key="GridCell.Tab.1.bottom/-3440.-91.3440.1417/0.23.1680.1027@-3440.-91.3440.1417" timestamp="1591114831072" />
+    <state width="1699" height="500" key="GridCell.Tab.1.center" timestamp="1591114831071">
+      <screen x="-3440" y="-91" width="3440" height="1417" />
+    </state>
+    <state width="1699" height="500" key="GridCell.Tab.1.center/-3440.-91.3440.1417/0.23.1680.1027@-3440.-91.3440.1417" timestamp="1591114831071" />
+    <state width="1699" height="500" key="GridCell.Tab.1.left" timestamp="1591114831071">
+      <screen x="-3440" y="-91" width="3440" height="1417" />
+    </state>
+    <state width="1699" height="500" key="GridCell.Tab.1.left/-3440.-91.3440.1417/0.23.1680.1027@-3440.-91.3440.1417" timestamp="1591114831071" />
+    <state width="1699" height="500" key="GridCell.Tab.1.right" timestamp="1591114831072">
+      <screen x="-3440" y="-91" width="3440" height="1417" />
+    </state>
+    <state width="1699" height="500" key="GridCell.Tab.1.right/-3440.-91.3440.1417/0.23.1680.1027@-3440.-91.3440.1417" timestamp="1591114831072" />
+    <state x="-1182" y="368" key="com.intellij.ide.util.TipDialog" timestamp="1591093904106">
+      <screen x="-3440" y="-91" width="3440" height="1417" />
+    </state>
+    <state x="-1182" y="368" key="com.intellij.ide.util.TipDialog/-3440.-91.3440.1417/0.23.1680.1027@-3440.-91.3440.1417" timestamp="1591093904106" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/main.py</url>
+          <line>16</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
