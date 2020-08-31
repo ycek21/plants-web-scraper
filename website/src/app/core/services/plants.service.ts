@@ -11,7 +11,6 @@ export class PlantsService {
 
   public getPhotoList(plantType: string) {
     const url = PHOTOS_URL.replace(':/TYPE:/', plantType);
-    console.log("URL: ",url);
 
     return this.http.get(url);
   }

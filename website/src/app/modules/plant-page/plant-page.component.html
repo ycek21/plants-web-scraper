@@ -1,0 +1,27 @@
+<div class="photoPage">
+  <div class="photoPage__plantContainer">
+    <div class="plantContainer__photoContainer">
+      <div class="plantContainer__plantType">
+        <div class="photoPage__arrow" (click)="navigateToHome()">
+          <mat-icon [inline]="true">west</mat-icon>
+        </div>
+        <h1 class="plantContainer__plantType--font">{{ plantType }}</h1>
+      </div>
+      <div
+        class="plantContainer__photo"
+        style="
+      background-image: url({{ plantPhotoUrl }})
+    "
+      ></div>
+    </div>
+    <div class="plantContainer__description">
+      <p>
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Magnam quas,
+        reiciendis nesciunt harum voluptate nobis ullam nisi eligendi magni
+        necessitatibus accusamus, placeat modi incidunt quos mollitia architecto
+        sint! Nobis, sint?
+      </p>
+    </div>
+  </div>
+  <app-plant-list class="photoPage__plantList" [forPlantPage]="true" [plantType]="plantType" ></app-plant-list>
+</div>

@@ -1,0 +1,65 @@
+.photoPage {
+  display: flex;
+  flex-direction: column;
+  min-height: 80vh;
+  box-sizing: border-box;
+}
+
+.photoPage__arrow {
+  width: 15%;
+  height: 20%;
+  font-size: 3vw;
+  margin-left: 2vw;
+}
+
+.photoPage__plantContainer {
+  display: flex;
+  justify-content: space-between;
+  justify-self: center;
+  flex-direction: row;
+  height: 95vh;
+  width: 100%;
+  margin-top: 8vh;
+  margin-bottom: 10vh;
+}
+
+.plantContainer__plantType {
+    display: flex;
+    width: 100%;
+    justify-content: flex-start;
+    height: 15%;
+}
+
+.plantContainer__plantType--font {
+  font-size: 4vw;
+  font-family: Saira;
+  color: black;
+  font-style: normal;
+  font-weight: bolder;
+}
+
+.plantContainer__photoContainer {
+  display: flex;
+  justify-content: center;
+  width: 70%;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.plantContainer__photo {
+    background-size: cover;
+    background-position: center;
+    width: 90%;
+    height: 80%;
+}
+
+.plantContainer__description {
+  display: flex;
+  justify-content: center;
+  width: 35%;
+}
+
+.photoPage__plantList {
+  padding-top: 10vh;
+}
+

@@ -1,3 +1,5 @@
+import { LazyLoadImageModule } from 'ng-lazyload-image';
+
 import { MaterialModule } from './shared/material/material.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -9,6 +11,7 @@ import { HeaderComponent } from './core/header/header.component';
 import { PlantCardComponent } from './modules/plant-card/plant-card.component';
 import { PlantListComponent } from './modules/plant-list/plant-list.component';
 import { HttpClientModule } from '@angular/common/http';
+import { PlantPageComponent } from './modules/plant-page/plant-page.component';
 
 @NgModule({
   declarations: [
@@ -16,14 +19,16 @@ import { HttpClientModule } from '@angular/common/http';
     HeaderComponent,
     routingComponents,
     PlantCardComponent,
-    PlantListComponent
+    PlantListComponent,
+    PlantPageComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
-    HttpClientModule
+    HttpClientModule,
+    LazyLoadImageModule
   ],
   providers: [],
   bootstrap: [AppComponent]
