@@ -1,5 +1,7 @@
+import { PexelsService } from "./../../core/services/pexels.service";
 import { PlantsService } from "./../../core/services/plants.service";
 import { Component, OnInit, Input } from "@angular/core";
+import { report } from "process";
 
 @Component({
   selector: "app-plant-list",
@@ -24,10 +26,21 @@ export class PlantListComponent implements OnInit {
   @Input() forPlantPage = false;
   @Input() plantType;
 
-  constructor(private plantsService: PlantsService) {}
+  plantPexelsURL: string[] = [];
+  constructor(
+    private plantsService: PlantsService,
+    private pexelsService: PexelsService
+  ) {}
 
   ngOnInit(): void {
     this.getPlantsURLs(this.selectedPlant);
+    this.pexelsService.getPhotos("rose", 10).subscribe((resp) => {
+      console.log(resp.photos[0].src.original);
+      for (var i = 0; i < resp.photos.length; i++) {
+        this.plantPexelsURL.push(resp.photos[i].src.original);
+      }
+      console.log(this.plantPexelsURL);
+    });
   }
 
   getUrls() {
