@@ -15,13 +15,18 @@
       ></div>
     </div>
     <div class="plantContainer__description">
-      <p>
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Magnam quas,
-        reiciendis nesciunt harum voluptate nobis ullam nisi eligendi magni
-        necessitatibus accusamus, placeat modi incidunt quos mollitia architecto
-        sint! Nobis, sint?
-      </p>
+      <div class="plantContainer__descriptionBox">
+        <h1 class="plantContainer__description--font">DESCRIPTION</h1>
+        <p>{{ plantDescription }}</p>
+        <p>{{ plantKingdom }}</p>
+        <p>{{ plantOrder }}</p>
+        <p>{{ plantFamily }}</p>
+      </div>
     </div>
   </div>
-  <app-plant-list class="photoPage__plantList" [forPlantPage]="true" [plantType]="plantType" ></app-plant-list>
+  <app-plant-list
+    class="photoPage__plantList"
+    [forPlantPage]="true"
+    [plantType]="plantType"
+  ></app-plant-list>
 </div>

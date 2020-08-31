@@ -55,11 +55,26 @@
 
 .plantContainer__description {
   display: flex;
-  justify-content: center;
+  align-items: flex-end;
   width: 35%;
 }
 
 .photoPage__plantList {
   padding-top: 10vh;
+}
+
+.plantContainer__descriptionBox {
+  display: flex;
+  height: 82%;
+  width: 100%;
+  align-content: flex-start;
+}
+
+.plantContainer__description--font {
+  font-size: 2vw;
+  font-family: Saira;
+  color: black;
+  font-style: normal;
+  font-weight: bolder;
 }
 
