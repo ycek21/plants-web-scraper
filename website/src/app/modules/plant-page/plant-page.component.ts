@@ -27,12 +27,21 @@ export class PlantPageComponent implements OnInit {
 
   preparePage() {
     this.plantType = this.route.snapshot.paramMap
-      .get('plantType')
+      .get("plantType")
       .toUpperCase();
-    this.plantPhotoUrl += this.plantType.toLowerCase() + '/';
-    this.plantPhotoUrl += this.route.snapshot.paramMap.get('id');
 
-    this.getPlantInfo();
+    const plantPhotoSource = this.route.snapshot.paramMap.get("pexelsId");
+
+    if (plantPhotoSource !== null) {
+      this.plantPhotoUrl = "https://images.pexels.com/photos/";
+      this.plantPhotoUrl += this.route.snapshot.paramMap.get("id") + "/";
+      this.plantPhotoUrl += this.route.snapshot.paramMap.get("pexelsId");
+    } else {
+      this.plantPhotoUrl += this.plantType.toLowerCase() + "/";
+      this.plantPhotoUrl += this.route.snapshot.paramMap.get("id");
+    }
+
+    // this.getPlantInfo();
   }
 
   navigateToHome() {

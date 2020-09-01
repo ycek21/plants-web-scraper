@@ -26,7 +26,7 @@ export class PlantListComponent implements OnInit {
   @Input() forPlantPage = false;
   @Input() plantType;
 
-  plantPexelsURL: string[] = [];
+  // plantPexelsURL: string[] = [];
   constructor(
     private plantsService: PlantsService,
     private pexelsService: PexelsService
@@ -34,29 +34,45 @@ export class PlantListComponent implements OnInit {
 
   ngOnInit(): void {
     this.getPlantsURLs(this.selectedPlant);
-    this.pexelsService.getPhotos("rose", 10).subscribe((resp) => {
-      console.log(resp.photos[0].src.original);
-      for (var i = 0; i < resp.photos.length; i++) {
-        this.plantPexelsURL.push(resp.photos[i].src.original);
-      }
-      console.log(this.plantPexelsURL);
-    });
+    this.getUrls();
   }
 
   getUrls() {
-    this.forPlantPage
-      ? this.getPlantsURLs(this.selectedPlant)
-      : this.getPlantsURLs(this.plantType);
+    // this.forPlantPage
+    //   ? this.getPlantsURLs(this.selectedPlant)
+    //   : this.getPlantsURLs(this.plantType);
+    // this.s
   }
 
   getPlantsURLs(plantType: string) {
-    this.plantsService.getPhotoList(plantType).subscribe((response) => {
-      this.plantsURL = response["scrapedPhotosLinks"];
-    });
+    if (this.slideToggle) {
+      this.plantsService.getPhotoList(plantType).subscribe((response) => {
+        this.plantsURL = response["scrapedPhotosLinks"];
+      });
+    } else {
+      this.pexelsService.getPhotos(this.selectedPlant, 10).subscribe((resp) => {
+        console.log(resp.photos[0].src.original);
+        this.plantsURL = [];
+        for (var i = 0; i < resp.photos.length; i++) {
+          this.plantsURL.push(resp.photos[i].src.original);
+        }
+        console.log(this.plantsURL);
+      });
+    }
   }
 
   selectPlant(plant: string) {
     this.selectedPlant = plant;
+    this.getPlantsURLs(this.selectedPlant);
+  }
+
+  slideToggler() {
+    console.log("TOGGGLE", this.slideToggle)
+    this.slideToggle = !this.slideToggle;
+  }
+
+  changePhotoSource() {
+    console.log("EVENT FOR CHAGING SOURCE")
     this.getPlantsURLs(this.selectedPlant);
   }
 }

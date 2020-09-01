@@ -13,11 +13,11 @@
       </mat-chip-list>
     </div>
     <div class="toolbar__toggle">
-      <mat-slide-toggle [checked]="slideToggle"></mat-slide-toggle>
+      <mat-slide-toggle [checked]="slideToggle" (click)="slideToggler()" (change)="changePhotoSource()" ></mat-slide-toggle>
     </div>
   </div>
   
   <div class="container_photoContainer">
-    <app-plant-card *ngFor="let plantURL of plantsURL; index as i" [plantPhoto]="plantURL"  [photoCardIndex]="i"></app-plant-card>
+    <app-plant-card *ngFor="let plantURL of plantsURL; index as i" [plantPhoto]="plantURL"  [photoCardIndex]="i" [plantName]="selectedPlant"></app-plant-card>
   </div>
 </div>

@@ -7,13 +7,14 @@ import { Routes, RouterModule } from "@angular/router";
 const routes: Routes = [
   { path: "", component: HomePageComponent },
   { path: "home", component: HomePageComponent },
-  { path: ":plantType/:id", component: PlantPageComponent },
+  { path: ':plantType/:id/:pexelsId', component: PlantPageComponent},
+  { path: ':plantType/:id', component: PlantPageComponent },
   { path: "**", component: HomePageComponent },
 ];
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes, { scrollPositionRestoration: 'enabled' }),
+    RouterModule.forRoot(routes, { scrollPositionRestoration: 'disabled' }),
   ],
   exports: [RouterModule],
 })
