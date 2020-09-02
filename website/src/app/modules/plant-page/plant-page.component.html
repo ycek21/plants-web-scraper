@@ -11,7 +11,7 @@
         class="plantContainer__photo"
         style="
       background-image: url({{ plantPhotoUrl }})
-    "
+      "
       ></div>
     </div>
     <div class="plantContainer__description">
@@ -28,5 +28,6 @@
     class="photoPage__plantList"
     [forPlantPage]="true"
     [plantType]="plantType"
+    [displayedInPexelsPage]= "displayedInPexelsPage"
   ></app-plant-list>
 </div>

@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from "@angular/core";
-import { Router } from "@angular/router";
+import { Router, ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: "app-plant-card",
@@ -11,29 +11,21 @@ export class PlantCardComponent implements OnInit {
   @Input() photoCardIndex;
   @Input() plantName;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private activetedRoutes: ActivatedRoute) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
 
   goToPhotoPage() {
     const urlToPhoto = this.plantPhoto.split("/photos");
     const plantPhotoSource = this.plantPhoto.split("://");
 
-    //https://images.pexels.com/photos/1253718/pexels-photo-1253718.jpeg
-    //http://localhost:8085/api/photos/cactus/photo-6.png
-
     if (plantPhotoSource[0] === "https") {
-      console.log("PEXELS: ", plantPhotoSource);
-      console.log("urlToPhoto: ", urlToPhoto);
       const url = this.plantName + urlToPhoto[1];
-      console.log("URL", url);
       this.router.navigateByUrl(url);
 
     } else {
-      console.log("NOT PEXELS: ", plantPhotoSource);
-      console.log("urlToPhoto: ", urlToPhoto);
-
-      this.router.navigateByUrl(urlToPhoto[1]);
+      this.router.navigateByUrl(urlToPhoto[1], { skipLocationChange: false });
     }
   }
 }

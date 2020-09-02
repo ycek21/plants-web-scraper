@@ -25,6 +25,7 @@ export class PlantListComponent implements OnInit {
   slideToggle = true;
   @Input() forPlantPage = false;
   @Input() plantType;
+  @Input() displayedInPexelsPage = false;
 
   // plantPexelsURL: string[] = [];
   constructor(
@@ -34,29 +35,30 @@ export class PlantListComponent implements OnInit {
 
   ngOnInit(): void {
     this.getPlantsURLs(this.selectedPlant);
-    this.getUrls();
-  }
-
-  getUrls() {
-    // this.forPlantPage
-    //   ? this.getPlantsURLs(this.selectedPlant)
-    //   : this.getPlantsURLs(this.plantType);
-    // this.s
   }
 
   getPlantsURLs(plantType: string) {
     if (this.slideToggle) {
-      this.plantsService.getPhotoList(plantType).subscribe((response) => {
-        this.plantsURL = response["scrapedPhotosLinks"];
-      });
+      if (!this.displayedInPexelsPage) {
+        this.plantsService.getPhotoList(plantType).subscribe((response) => {
+          this.plantsURL = response["scrapedPhotosLinks"];
+        });
+      } else {
+        this.pexelsService
+          .getPhotos(this.selectedPlant, 10)
+          .subscribe((resp) => {
+            this.plantsURL = [];
+            for (var i = 0; i < resp.photos.length; i++) {
+              this.plantsURL.push(resp.photos[i].src.original);
+            }
+          });
+      }
     } else {
       this.pexelsService.getPhotos(this.selectedPlant, 10).subscribe((resp) => {
-        console.log(resp.photos[0].src.original);
         this.plantsURL = [];
         for (var i = 0; i < resp.photos.length; i++) {
           this.plantsURL.push(resp.photos[i].src.original);
         }
-        console.log(this.plantsURL);
       });
     }
   }
@@ -67,12 +69,10 @@ export class PlantListComponent implements OnInit {
   }
 
   slideToggler() {
-    console.log("TOGGGLE", this.slideToggle)
     this.slideToggle = !this.slideToggle;
   }
 
   changePhotoSource() {
-    console.log("EVENT FOR CHAGING SOURCE")
     this.getPlantsURLs(this.selectedPlant);
   }
 }
