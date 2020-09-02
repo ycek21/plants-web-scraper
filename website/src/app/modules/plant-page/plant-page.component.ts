@@ -35,12 +35,13 @@ export class PlantPageComponent implements OnInit {
   // Dokladnie tak samo bedziemy musieli zrobic z opisem
 
   refreshPage() {
+    console.log("EHH FIRST TIME")
     this.route.params.subscribe((routeParams) => {
       this.plantPhotoUrl = '';
 
       const plantPhotoSource = routeParams.pexelsId;
 
-      if (plantPhotoSource !== null) {
+      if (plantPhotoSource !== null && plantPhotoSource !== undefined) {
         this.displayedInPexelsPage = true;
         this.plantPhotoUrl = "https://images.pexels.com/photos/";
         this.plantPhotoUrl += routeParams.id + "/";
@@ -49,6 +50,7 @@ export class PlantPageComponent implements OnInit {
         this.plantPhotoUrl = 'http://localhost:8085/api/photos/';
         this.plantPhotoUrl += routeParams.plantType + "/";
         this.plantPhotoUrl += routeParams.id;
+
       }
     });
   }
