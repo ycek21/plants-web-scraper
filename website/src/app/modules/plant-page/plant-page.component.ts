@@ -1,19 +1,19 @@
-import { WikipediaDataService } from "./../../core/services/wikipedia-data.service";
-import { Component, OnInit, } from "@angular/core";
-import { ActivatedRoute, Router } from "@angular/router";
+import { WikipediaDataService } from './../../core/services/wikipedia-data.service';
+import { Component, OnInit, } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
-  selector: "app-plant-page",
-  templateUrl: "./plant-page.component.html",
-  styleUrls: ["./plant-page.component.css"],
+  selector: 'app-plant-page',
+  templateUrl: './plant-page.component.html',
+  styleUrls: ['./plant-page.component.css'],
 })
 export class PlantPageComponent implements OnInit {
-  plantType = "";
-  plantPhotoUrl = "http://localhost:8085/api/photos/";
-  plantDescription = "";
-  plantKingdom = "";
-  plantOrder = "";
-  plantFamily = "";
+  plantType = '';
+  plantPhotoUrl = 'http://localhost:8085/api/photos/';
+  plantDescription = '';
+  plantKingdom = '';
+  plantOrder = '';
+  plantFamily = '';
   displayedInPexelsPage = false;
 
   constructor(
@@ -35,7 +35,6 @@ export class PlantPageComponent implements OnInit {
   // Dokladnie tak samo bedziemy musieli zrobic z opisem
 
   refreshPage() {
-    console.log("EHH FIRST TIME")
     this.route.params.subscribe((routeParams) => {
       this.plantPhotoUrl = '';
 
@@ -43,12 +42,14 @@ export class PlantPageComponent implements OnInit {
 
       if (plantPhotoSource !== null && plantPhotoSource !== undefined) {
         this.displayedInPexelsPage = true;
-        this.plantPhotoUrl = "https://images.pexels.com/photos/";
-        this.plantPhotoUrl += routeParams.id + "/";
+
+        this.plantPhotoUrl = 'https://images.pexels.com/photos/';
+        this.plantPhotoUrl += routeParams.id + '/';
         this.plantPhotoUrl += routeParams.pexelsId;
-      } else {
+      } 
+      else {
         this.plantPhotoUrl = 'http://localhost:8085/api/photos/';
-        this.plantPhotoUrl += routeParams.plantType + "/";
+        this.plantPhotoUrl += routeParams.plantType + '/';
         this.plantPhotoUrl += routeParams.id;
 
       }
@@ -57,26 +58,26 @@ export class PlantPageComponent implements OnInit {
 
   preparePage() {
     this.plantType = this.route.snapshot.paramMap
-      .get("plantType")
+      .get('plantType')
       .toUpperCase();
 
-    const plantPhotoSource = this.route.snapshot.paramMap.get("pexelsId");
+    const plantPhotoSource = this.route.snapshot.paramMap.get('pexelsId');
 
     if (plantPhotoSource !== null) {
       this.displayedInPexelsPage = true;
-      this.plantPhotoUrl = "https://images.pexels.com/photos/";
-      this.plantPhotoUrl += this.route.snapshot.paramMap.get("id") + "/";
-      this.plantPhotoUrl += this.route.snapshot.paramMap.get("pexelsId");
+      this.plantPhotoUrl = 'https://images.pexels.com/photos/';
+      this.plantPhotoUrl += this.route.snapshot.paramMap.get('id') + '/';
+      this.plantPhotoUrl += this.route.snapshot.paramMap.get('pexelsId');
     } else {
-      this.plantPhotoUrl += this.plantType.toLowerCase() + "/";
-      this.plantPhotoUrl += this.route.snapshot.paramMap.get("id");
+      this.plantPhotoUrl += this.plantType.toLowerCase() + '/';
+      this.plantPhotoUrl += this.route.snapshot.paramMap.get('id');
     }
 
     // this.getPlantInfo();
   }
 
   navigateToHome() {
-    this.router.navigate(["/home"]);
+    this.router.navigate(['/home']);
   }
 
   getPlantInfo() {

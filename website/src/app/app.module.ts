@@ -23,12 +23,12 @@ import { PlantPageComponent } from './modules/plant-page/plant-page.component';
     PlantPageComponent
   ],
   imports: [
-    BrowserModule,
     AppRoutingModule,
+    BrowserModule,
     BrowserAnimationsModule,
-    MaterialModule,
     HttpClientModule,
-    LazyLoadImageModule
+    LazyLoadImageModule,
+    MaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]

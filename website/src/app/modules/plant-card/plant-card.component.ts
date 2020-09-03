@@ -10,6 +10,7 @@ export class PlantCardComponent implements OnInit {
   @Input() plantPhoto: string;
   @Input() photoCardIndex;
   @Input() plantName;
+  defaultPhoto = 'https://www.placecage.com/1000/1000';
 
   constructor(private router: Router, private activetedRoutes: ActivatedRoute) {}
 
