@@ -66,8 +66,10 @@
 .plantContainer__descriptionBox {
   display: flex;
   height: 82%;
-  width: 100%;
+  width: 90%;
   align-content: flex-start;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .plantContainer__description--font {

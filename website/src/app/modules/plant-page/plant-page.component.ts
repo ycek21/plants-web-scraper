@@ -1,3 +1,4 @@
+import { plantData } from './../../shared/models/plantData';
 import { WikipediaDataService } from './../../core/services/wikipedia-data.service';
 import { Component, OnInit, } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -8,13 +9,10 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./plant-page.component.css'],
 })
 export class PlantPageComponent implements OnInit {
-  plantType = '';
+  plantType = ''; 
   plantPhotoUrl = 'http://localhost:8085/api/photos/';
-  plantDescription = '';
-  plantKingdom = '';
-  plantOrder = '';
-  plantFamily = '';
   displayedInPexelsPage = false;
+  plantData: plantData;
 
   constructor(
     private route: ActivatedRoute,
@@ -73,7 +71,7 @@ export class PlantPageComponent implements OnInit {
       this.plantPhotoUrl += this.route.snapshot.paramMap.get('id');
     }
 
-    // this.getPlantInfo();
+    this.getPlantInfo();
   }
 
   navigateToHome() {
@@ -84,9 +82,7 @@ export class PlantPageComponent implements OnInit {
     this.wikipediaService
       .getPlantData(this.plantType.toLowerCase())
       .subscribe((response) => {
-        // let sth = response.toString().replace('\\', '');
-        // // let sth2 = JSON.parse(sth);
-        // console.log('DATA:', sth)
+        this.plantData = JSON.parse(response);
       });
   }
 }

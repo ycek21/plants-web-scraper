@@ -19,11 +19,11 @@ export class PlantListComponent implements OnInit {
     'lavender',
     'palm',
   ];
-  selectedPlant = 'cactus';
+  selectedPlant = '';
   plantsURL: string[] = [];
   slideToggle = true;
   @Input() forPlantPage = false;
-  @Input() plantType;
+  @Input() plantType = '';
   @Input() displayedInPexelsPage = false;
 
   // plantPexelsURL: string[] = [];
@@ -33,6 +33,7 @@ export class PlantListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.selectPlantAtTheBeginning();
     this.getPlantsURLs(this.selectedPlant);
   }
 
@@ -73,5 +74,13 @@ export class PlantListComponent implements OnInit {
 
   changePhotoSource() {
     this.getPlantsURLs(this.selectedPlant);
+  }
+
+  selectPlantAtTheBeginning() {
+    if ( this.plantType === '' ) {
+      this.selectedPlant = 'cactus';
+    } else {
+      this.selectedPlant = this.plantType;
+    }
   }
 }
