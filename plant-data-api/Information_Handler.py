@@ -21,6 +21,9 @@ class InformationHandler(Resource):
         sentences='.'.join(sentences)
         plant={}
         Kingdom,Family,Order=family_info(name)
+        Family=Family.replace('.[1]','')
+        Order=Order.replace('.[1]','')
+        Kingdom=Kingdom.replace('.[1]','')
         plant['Name'] = name
         plant['Description'] = sentences
         plant['Kingdom']=Kingdom
