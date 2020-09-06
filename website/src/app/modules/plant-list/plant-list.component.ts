@@ -21,8 +21,8 @@ export class PlantListComponent implements OnInit {
   ];
   selectedPlant = "";
   plantsURL: string[] = [];
-  slideToggle = true;
-  loadingPhotosList;
+  dataNotFromPexels = true;
+  loadingPhotosList = true;
   @Input() forPlantPage = false;
   @Input() plantType = "";
   @Input() displayedInPexelsPage = false;
@@ -38,11 +38,15 @@ export class PlantListComponent implements OnInit {
   }
 
   getPlantsURLs(plantType: string) {
-    if (this.slideToggle) {
+    this.loadingPhotosList = true;
+
+    if (this.dataNotFromPexels) {
       if (!this.displayedInPexelsPage) {
         this.plantsService.getPhotoList(plantType).subscribe((response) => {
           this.plantsURL = response["scrapedPhotosLinks"];
           this.loadingPhotosList = false;
+          console.log(this.loadingPhotosList);
+
         });
       } else {
         this.pexelsService
@@ -54,6 +58,8 @@ export class PlantListComponent implements OnInit {
             }
 
             this.loadingPhotosList = false;
+          console.log(this.loadingPhotosList);
+
           });
       }
     } else {
@@ -66,28 +72,22 @@ export class PlantListComponent implements OnInit {
           }
 
           this.loadingPhotosList = false;
+          console.log(this.loadingPhotosList);
         });
     }
   }
 
   selectPlant(plant: string) {
-    this.loadingPhotosList = true;
     this.selectedPlant = plant;
     this.getPlantsURLs(this.selectedPlant);
   }
 
-  slideToggler() {
-    this.loadingPhotosList = true;
-    this.slideToggle = !this.slideToggle;
-  }
-
   changePhotoSource() {
-    this.loadingPhotosList = true;
+    this.dataNotFromPexels = !this.dataNotFromPexels;
     this.getPlantsURLs(this.selectedPlant);
   }
 
   selectPlantAtTheBeginning() {
-    this.loadingPhotosList = true;
     if (this.plantType === "") {
       this.selectedPlant = "cactus";
     } else {

@@ -37,20 +37,19 @@ mat-chip.mat-standard-chip {
     background-color: #F2E352;
 }
 
-.toolbar__toggle {
+.toolbar__button {
     display: flex;
     width: 100%;
     height: 50%;
     justify-content: center;
     align-items: center;
+    padding-top: 30px;
 }
-
-/deep/ .mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-bar {
-    background-color: black;
-}
-
-/deep/ .mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-thumb {
-    background-color: white;
+.toolbar__button--primary {
+    width: 25%;
+    font-family: Saira;
+    font-weight: bold;
+    height: 50%;
 }
 
 .container_photoContainer {
