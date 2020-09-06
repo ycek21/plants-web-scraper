@@ -54,6 +54,7 @@ mat-chip.mat-standard-chip {
 }
 
 .container_photoContainer {
+    position: relative;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -62,4 +63,9 @@ mat-chip.mat-standard-chip {
     width: 50%;
     padding-left: 25vw;
     padding-right: 25vw;
+}
+
+.photoContainer__spinner {
+    position: absolute;
+    top: 25%;
 }

@@ -18,6 +18,7 @@
   </div>
   
   <div class="container_photoContainer">
+    <mat-spinner *ngIf="loadingPhotosList" [color]="'accent'" [diameter]="200" class="photoContainer__spinner"></mat-spinner>
     <app-plant-card *ngFor="let plantURL of plantsURL; index as i" [plantPhoto]="plantURL"  [photoCardIndex]="i" [plantName]="selectedPlant"></app-plant-card>
   </div>
 </div>
