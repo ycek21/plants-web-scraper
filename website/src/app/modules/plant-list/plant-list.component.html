@@ -1,0 +1,36 @@
+<div class="container">
+  <div *ngIf="!forPlantPage" class="container_toolbar">
+    <div class="container__plantBrowser">
+      <mat-chip-list>
+        <mat-chip
+          class="plantBrowser__item"
+          (click)="selectPlant(plant)"
+          *ngFor="let plant of plantsType"
+          [selected]="plant === selectedPlant"
+        >
+          {{ plant }}
+        </mat-chip>
+      </mat-chip-list>
+    </div>
+    <div class="toolbar__button">
+      <button class="toolbar__button--primary" mat-stroked-button (click)="changePhotoSource()">
+        Change data source
+      </button>
+    </div>
+  </div>
+
+  <div class="container_photoContainer">
+    <mat-spinner
+      *ngIf="loadingPhotosList"
+      [color]="'accent'"
+      [diameter]="200"
+      class="photoContainer__spinner"
+    ></mat-spinner>
+    <app-plant-card
+      *ngFor="let plantURL of plantsURL; index as i"
+      [plantPhoto]="plantURL"
+      [photoCardIndex]="i"
+      [plantName]="selectedPlant"
+    ></app-plant-card>
+  </div>
+</div>

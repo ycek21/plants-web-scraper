@@ -1,0 +1,7 @@
+<div
+  [ngClass]="photoCardIndex % 2 == 1 ? 'plantCard--gray' : 'plantCard'"
+  class="plantCard"
+  (click)="goToPhotoPage()"
+  [lazyLoad]="plantPhoto"
+  [defaultImage]='defaultPhoto'
+></div>
